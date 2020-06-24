@@ -52,13 +52,6 @@ class App extends Component {
   weightabetizeHogs = () => {
 
   }
-
-  renderClick = (e) => {
-  let hogAttribute = this.state.hogs.map ( (hog) => {
-    if (e.target.parentElement.innerText === hog.name){
-        console.log('we are here')
-    }})
-  }
   
 
   render() {
@@ -67,7 +60,7 @@ class App extends Component {
       <div className="App">
         <Nav />
         <SortBy changeType={this.changeType} getHogs={this.getHogs}/>
-        <HogContainer hogs={this.state.hogs} renderClick={this.renderClick}/>
+        <HogContainer hogs={this.state.hogs}/>
       </div>
     );
   }

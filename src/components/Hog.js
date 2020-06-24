@@ -6,31 +6,34 @@ class Hog extends Component {
 
     constructor() {
         super()
-    
+
         this.state = {
-          front: true
+            front: true
         }
-      }
+    }
+
+    isFront = (event, pigImage) => {
+        console.log(event)
+        // debugger
+        if (this.state.front === true) {
+            event.target.parentElement.innerHTML = <CardFront hogObj={this.props.hogObj} pigImage={pigImage}/>
+            this.setState({front: false})
+        } else {
+            event.target.parentElement.innerHTML = <CardBack hobObj={this.props.hobObj}/>
+            this.setState({front: true})
+        }
+    }
 
     render() {
 
-        let {name, specialty, greased, weight} = this.props.hogObj
+        let {name} = this.props.hogObj
         let pigImage = require(`../hog-imgs/${name.toLowerCase().split(' ').join('_')}.jpg`)
-       
+        
         
         
         return (
-            <div className='pigTile' onClick= {this.props.renderClick}>
-                
-                {name}
-                    <br/>
-                <img src={pigImage} alt='hog'/>
-            </div>
-            <div>
-                {specialty}
-                {greased}
-                {weight}
-            </div>
+                <CardFront name={name} image={pigImage} onClick={this.isFront}/>
+            
         )
     }
 }

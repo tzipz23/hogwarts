@@ -3,10 +3,13 @@ import React, { Component } from "react";
 class CardBack extends Component {
 
 
-render(){
+    render(){
 
         return(
+            <div className='pigTile'>
 
+            </div>
+                
         )
 
     }
