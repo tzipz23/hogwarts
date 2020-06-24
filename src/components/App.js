@@ -53,13 +53,21 @@ class App extends Component {
 
   }
 
+  renderClick = (e) => {
+  let hogAttribute = this.state.hogs.map ( (hog) => {
+    if (e.target.parentElement.innerText === hog.name){
+        console.log('we are here')
+    }})
+  }
+  
+
   render() {
     // let pigs =  hogs.map( hog => { <})
     return (
       <div className="App">
         <Nav />
         <SortBy changeType={this.changeType} getHogs={this.getHogs}/>
-        <HogContainer hogs={this.state.hogs}/>
+        <HogContainer hogs={this.state.hogs} renderClick={this.renderClick}/>
       </div>
     );
   }
