@@ -14,7 +14,7 @@ class App extends Component {
 
     this.state = {
       hogs: [],
-      filters: {
+      sortBy: {
         type: 'all'
       }
     }
@@ -25,7 +25,32 @@ class App extends Component {
   
   changeType = (e) => {
     let type = e.target.value
-    this.setState({filters: {type: type}})
+    this.setState({sortBy: {type: type}})
+
+  }
+
+  getHogs = (e) => {
+    console.log()
+    if (this.state.sortBy.type === 'all'){
+      this.setState({hogs: hogs})
+    } else if (this.state.sortBy.type === 'name') {
+      this.alphabetizeHogs()
+    } else {
+      this.weightabetizeHogs() 
+    }
+    
+  }
+
+  alphabetizeHogs = () => {
+    let pigs = hogs.map((hog) => {
+      hog.sort()
+      return hog
+    })
+    console.log(pigs)
+  }
+
+  weightabetizeHogs = () => {
+
   }
 
   render() {
@@ -33,8 +58,8 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <SortBy changeType={this.changeType}/>
-        <HogContainer />
+        <SortBy changeType={this.changeType} getHogs={this.getHogs}/>
+        <HogContainer hogs={this.state.hogs}/>
       </div>
     );
   }

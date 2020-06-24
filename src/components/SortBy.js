@@ -11,14 +11,14 @@ class SortBy extends Component {
             <select name="type" id="type"
             onChange={this.props.changeType}>
               <option value="all">All</option>
-              <option value="cat">Name</option>
-              <option value="micropig">Weight</option>
+              <option value="name">Name</option>
+              <option value="weight">Weight</option>
             </select>
           </div>
   
           <div className="field">
             <button className="ui secondary button"
-            onClick={this.props.getPets}>Submit</button>
+            onClick={this.props.getHogs}>Submit</button>
           </div>
         </div>
       )
